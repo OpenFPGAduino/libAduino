@@ -3,9 +3,9 @@ CC=arm-none-linux-gnueabi-gcc
 AR=arm-none-linux-gnueabi-ar
 SRC=$(wildcard api/*.c hardware/*.c)
 OBJ=$(addprefix ./, $(addsuffix .o, $(basename $(SRC))))
-LIB=libadunino.a
-SO =libadunino.so
-HEAD=api/openfpgadunino.h
+LIB=libaduino.a
+SO =libaduino.so
+HEAD=api/openfpgaduino.h
 
 all: $(LIB) $(SO) lib
 
