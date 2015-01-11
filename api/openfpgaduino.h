@@ -1,5 +1,5 @@
-#ifndef openfpgadunino_H_
-#define openfpgadunino_H_
+#ifndef OPENFGPADUINO_H_
+#define OPENFGPADUINO_H_
 
 //Functionality: Control the led
 //Argument:
@@ -30,4 +30,4 @@ unsigned int sleep(unsigned int seconds);
 //usecods: The micro seconds for sleeping
 int usleep(unsigned int useconds);
 
-#endif /* openfpgadunino_H_ */
+#endif /* OPENFGPADUINO_H_ */
