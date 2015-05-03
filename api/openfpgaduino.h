@@ -1,6 +1,12 @@
 #ifndef OPENFGPADUINO_H_
 #define OPENFGPADUINO_H_
 
+//Functionality: Open the recourse in FPGA, call in the begin of main
+int fpga_open();
+
+//Functionality: Close the recourse in FPGA
+void fpga_close();
+
 //Functionality: Control the led
 //Argument:
 //id: The id of led can be 0-3
