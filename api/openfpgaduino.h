@@ -8,6 +8,15 @@
 //g: The greem color of led
 //b: The blue color of led
 void led(int id, char r, char g, char b);
+//Functionality: Get the temperatue
+//Argument:
+//id: The id of AM2302 can be 0-1
+float am2301_temperature(int id);
+
+//Functionality: Get the moisture
+//Argument:
+//id: The id of AM2302 can be 0-1
+float am2301_moisture(int id);
 
 //Functionality: Control the IO port
 //Argument:

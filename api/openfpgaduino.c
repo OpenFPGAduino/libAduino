@@ -57,3 +57,35 @@ void pwm(int id, int pwm)
 	}
 
 }
+
+float am2301_temperature(int id)
+{
+	void* address;
+	switch (id) {
+		case 0:
+			address = AM2301_0;
+			break;
+		case 1:
+			address = AM2301_1;
+			break;
+		default:
+		    return 0;
+	}
+	return AM2301_get_temperature(address);
+}
+
+float am2301_moisture(int id)
+{
+	void* address;
+	switch (id) {
+		case 0:
+			address = AM2301_0;
+			break;
+		case 1:
+			address = AM2301_1;
+			break;
+		default:
+		    return 0;
+	}
+	return AM2301_get_moisture(address);
+}
