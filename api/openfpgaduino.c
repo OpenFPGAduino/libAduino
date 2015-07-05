@@ -30,9 +30,26 @@ void led(int id, char r, char g, char b)
 	set_rgb_led(address,r,g,b);
 }
 
-void io(int id, int value)
+void dio_a(int id, int value)
 {
 
+}
+
+void dio_b(int id, int value)
+{
+
+}
+
+int ain_a(int id)
+{
+	//AD7490_init(ADC7490_0);
+	return AD7490_get_data(ADC7490_0, id -1);
+}
+
+int ain_b(int id)
+{
+	//AD7490_init(ADC7490_1);
+	return AD7490_get_data(ADC7490_1, id -1);
 }
 
 void pwm(int id, int pwm)
@@ -89,3 +106,5 @@ float am2301_moisture(int id)
 	}
 	return AM2301_get_moisture(address);
 }
+
+

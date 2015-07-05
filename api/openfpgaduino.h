@@ -24,11 +24,27 @@ float am2301_temperature(int id);
 //id: The id of AM2302 can be 0-1
 float am2301_moisture(int id);
 
-//Functionality: Control the IO port
+//Functionality: Control the digital IO port
 //Argument:
 //id: use 0-26
 //value: Can be 1 or 0
-void io(int id, int value);
+void dio_a(int id, int value);
+
+//Functionality: Control the digital IO port
+//Argument:
+//id: use 0-26
+//value: Can be 1 or 0
+void dio_b(int id, int value);
+
+//Functionality: Get the analog port value
+//Argument:
+//id: use 1-8
+int ain_a(int id);
+
+//Functionality: Get the analog port value
+//Argument:
+//id: use 1-8
+int ain_b(int id);
 
 //Functionality: print the string to the console
 //Argument:
