@@ -7,6 +7,9 @@ int fpga_open();
 //Functionality: Close the recourse in FPGA
 void fpga_close();
 
+//Functionality: Open the shield IO
+void shield_ctrl_init();
+
 //Functionality: Control the led
 //Argument:
 //id: The id of led can be 0-3
@@ -35,6 +38,12 @@ void dio_a(int id, int value);
 //id: use 0-26
 //value: Can be 1 or 0
 void dio_b(int id, int value);
+
+//Functionality: Open the Analog IO A
+void ain_a_init();
+
+//Functionality: Open the Analog IO B
+void ain_b_init();
 
 //Functionality: Get the analog port value
 //Argument:

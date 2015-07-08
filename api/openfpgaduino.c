@@ -4,6 +4,7 @@
 #include "../hardware/FPGA.h"
 #include "../hardware/AM2301.h"
 #include "../hardware/sht1x.h"
+#include "../hardware/AD7490.h"
 #include "../hardware/position_sensor.h"
 #include "../hardware/step_motor.h"
 #include "../hardware/brush_motor.h"
@@ -40,15 +41,23 @@ void dio_b(int id, int value)
 
 }
 
+void ain_a_init()
+{
+	AD7490_init(ADC7490_0);
+}
+
+void ain_b_init()
+{
+	AD7490_init(ADC7490_1);
+}
+
 int ain_a(int id)
 {
-	//AD7490_init(ADC7490_0);
 	return AD7490_get_data(ADC7490_0, id -1);
 }
 
 int ain_b(int id)
 {
-	//AD7490_init(ADC7490_1);
 	return AD7490_get_data(ADC7490_1, id -1);
 }
 
