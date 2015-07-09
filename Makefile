@@ -10,10 +10,9 @@ HEAD=api/openfpgaduino.h
 all: $(LIB) $(SO) lib
 
 lib:
-	rm -rf lib
 	mkdir lib
-	mv -f $(LIB) ./lib/
-	mv -f $(SO) ./lib/
+	cp -f $(LIB) ./lib/
+	cp -f $(SO) ./lib/
 	cp -f $(HEAD) ./lib/
 
 $(LIB): $(OBJ)

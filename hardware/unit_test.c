@@ -3,6 +3,19 @@
 #include "platform.h"
 #include "led.h"
 
+void AD7940_test()
+{
+	int i;
+	AD7490_init(ADC7490_0);
+    while(1)
+    {
+        sleep(1);
+        for(i = 0; i < 16; i++)
+        	printf("ADC channel %d data is %d\n", i,
+        			AD7490_get_data(ADC7490_0, i));
+    }
+}
+
 void AM2301_test()
 {
     AM2301_init(AM2301_0);
@@ -46,38 +59,6 @@ void brush_motor_test()
     brush_motor_back(BRUSH_MOTOR_1);
     brush_motor_init(BRUSH_MOTOR_2, 1000, 30);
     brush_motor_init(BRUSH_MOTOR_3, 1000, 30);
-}
-
-void PID_test()
-{
-    int i;
-    float target =100;
-    float current = 0;
-    float current_d =0;
-    float current_d_d = 0;
-    float error;
-    float error_d;
-    float error_d_d;
-    for(i=0; i < 100; i++)
-    {
-        current_d_d = current_d;
-        current_d = current;
-        error_d_d = error_d;
-        error_d = error;
-        error = target - current_d_d;
-        current = current + PID(error, error_d, error_d_d, 0.2, 0.01, 0.03);
-        printf("current is %f\n",current);
-    }
-}
-
-void PIO_test()
-{
-    IOA_OE      = 0xffffffff;  // init IO
-    IOB_OE      = 0xffffffff;  // init IO
-    IOA_IO_0    = 0;
-    IOB_IO_0    = 1;
-    IOA_IO_1    = 0;
-    IOB_IO_1    = 1;
 }
 
 void subdivision_step_motor_test()
