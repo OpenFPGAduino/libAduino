@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include <stdarg.h>
 #include "../hardware/platform.h"
 #include "../hardware/PIO26.h"
 #include "../hardware/shield_ctrl.h"
@@ -116,4 +118,13 @@ float am2301_moisture(int id)
 	return AM2301_get_moisture(address);
 }
 
-
+int print(const char* format, ...)
+{
+    va_list ap;
+    int retval;
+    va_start(ap, format);
+    retval = vprintf(format, ap);
+    fflush(stdout);
+    va_end(ap);
+    return retval;
+}
