@@ -1,6 +1,9 @@
 #ifndef OPENFGPADUINO_H_
 #define OPENFGPADUINO_H_
 
+#define INPUT 0
+#define OUTPUT 1
+
 //Functionality: Open the recourse in FPGA, call in the begin of main
 int fpga_open();
 
@@ -27,17 +30,39 @@ float am2301_temperature(int id);
 //id: The id of AM2302 can be 0-1
 float am2301_moisture(int id);
 
-//Functionality: Control the digital IO port
+//Functionality: Control the digital IO port direction
 //Argument:
-//id: use 0-26
-//value: Can be 1 or 0
-void dio_a(int id, int value);
+//id: use 0-25
+//dir: Can be 0 as INPUT or 1 as OUTPUT
+int dio_a_dir(int dir);
 
-//Functionality: Control the digital IO port
+//Functionality: Control the digital IO port direction
 //Argument:
-//id: use 0-26
+//id: use 0-25
+//dir: Can be 0 as INPUT or 1 as OUTPUT
+int dio_b_dir(int dir);
+
+//Functionality: Get the digital IO port input
+//Argument:
+//id: use 0-25
+int dio_a_in(int id);
+
+//Functionality: Get the digital IO port input
+//Argument:
+//id: use 0-25
+int dio_b_in(int id);
+
+//Functionality: Control the digital IO port output
+//Argument:
+//id: use 0-25
 //value: Can be 1 or 0
-void dio_b(int id, int value);
+void dio_a_out(int id, int value);
+
+//Functionality: Control the digital IO port output
+//Argument:
+//id: use 0-25
+//value: Can be 1 or 0
+void dio_b_out(int id, int value);
 
 //Functionality: Open the Analog IO A
 void ain_a_init();
