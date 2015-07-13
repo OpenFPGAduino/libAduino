@@ -1,5 +1,3 @@
-
-//#include "alt_types.h"
 #include "opencores_i2c_regs.h"
 #include "opencores_i2c.h"
 

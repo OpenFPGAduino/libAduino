@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include "platform.h"
 #include "led.h"
+#include "AD7490.h"
 
 void AD7940_test()
 {
