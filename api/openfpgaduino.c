@@ -35,9 +35,11 @@ void led(int id, char r, char g, char b)
 
 void dio_a_dir(int id, int dir)
 {
+	if(id > 5)
+		id =+ 2;
 	if(dir == 0) {
 		IOA_OE &= (~(1 << id));
-	} else if (dir ==1)
+	} else if (dir == 1)
 	{
 		IOA_OE |= (1 << id);
 	}
@@ -45,6 +47,9 @@ void dio_a_dir(int id, int dir)
 
 void dio_b_dir(int id, int dir)
 {
+
+	if(id > 5)
+		id =+ 2;
 	if(dir == 0) {
 		IOB_OE &= (~(1 << id));
 	} else if (dir ==1)
@@ -65,12 +70,12 @@ int dio_b_in(int id)
 
 void dio_a_out(int id, int value)
 {
-	 *(&IOA_IO_0 + id) = value & 0x1;
+	*(&IOA_IO_0 + id) = value & 0x1;
 }
 
 void dio_b_out(int id, int value)
 {
-	 *(&IOB_IO_0 + id) = value & 0x1;
+	*(&IOB_IO_0 + id) = value & 0x1;
 }
 
 void ain_a_init()
