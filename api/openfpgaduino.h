@@ -34,13 +34,13 @@ float am2301_moisture(int id);
 //Argument:
 //id: use 0-25
 //dir: Can be 0 as INPUT or 1 as OUTPUT
-int dio_a_dir(int dir);
+int dio_a_dir(int id, int dir);
 
 //Functionality: Control the digital IO port direction
 //Argument:
 //id: use 0-25
 //dir: Can be 0 as INPUT or 1 as OUTPUT
-int dio_b_dir(int dir);
+int dio_b_dir(int id, int dir);
 
 //Functionality: Get the digital IO port input
 //Argument:
