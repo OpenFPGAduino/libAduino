@@ -26,7 +26,7 @@ int sysid_check()
 int fpga_open()
 {
 	  int sysmem_fd;
-	  sysmem_fd = open("/sys/kernel/debug/lophilo/modmem", O_RDWR);
+	  sysmem_fd = open("/sys/kernel/debug/openfgpaduino/modmem", O_RDWR);
 	  if (sysmem_fd < 0)
 		  return (false);
 	  FPGA_MOD_BASE = mmap(
@@ -40,7 +40,7 @@ int fpga_open()
 	  if( FPGA_MOD_BASE == MAP_FAILED)
 	  	  return (false);
 	  close(sysmem_fd);
-	  sysmem_fd = open("/sys/kernel/debug/lophilo/sysmem", O_RDWR);
+	  sysmem_fd = open("/sys/kernel/debug/openfpgaduino/sysmem", O_RDWR);
 	  if (sysmem_fd < 0)
 		  return (0);
 	  FPGA_SYS_BASE = mmap(
