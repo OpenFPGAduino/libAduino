@@ -26,7 +26,7 @@ int sysid_check()
 int fpga_open()
 {
 	  int sysmem_fd;
-	  sysmem_fd = open("/sys/kernel/debug/openfgpaduino/modmem", O_RDWR);
+	  sysmem_fd = open("/sys/kernel/debug/openfpgaduino/modmem", O_RDWR);
 	  if (sysmem_fd < 0)
 		  return (false);
 	  FPGA_MOD_BASE = mmap(
