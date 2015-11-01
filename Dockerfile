@@ -1,4 +1,4 @@
-FROM lizhizhou/openfpgaduino64
+FROM openfpgaduino/openfpgaduino
 MAINTAINER Zhizhou Li <lzz@meteroi.com>
 RUN  apt-get update && apt-get -y upgrade 
 RUN rm -rf /var/lib/apt/lists/*
