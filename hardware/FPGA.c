@@ -63,4 +63,32 @@ void fpga_close()
 	munmap(FPGA_MOD_BASE, ADDRESS_LENGTH);
 }
 
+int fpga_mem_get_32(int address)
+{
+	return *((volatile int*)address);
+}
 
+int fpga_mem_get_16(int address)
+{
+	return (0xffff & *((volatile int*)address));
+}
+
+int fpga_mem_get_8(int address)
+{
+	return (0xf & *((volatile int*)address));
+}
+
+void fpga_mem_set_32(int address, int data)
+{
+	*((volatile int*)address) = data;
+}
+
+void fpga_mem_set_16(int address, int data)
+{
+	*((volatile short*)address) = data;
+}
+
+void fpga_mem_set_8(int address, int data)
+{
+	*((volatile char*)address) = data;
+}
