@@ -20,11 +20,11 @@ extern int* FPGA_MOD_BASE;
 extern int* FPGA_SYS_BASE;
 extern int fpga_open();
 extern void fpga_close();
-extern int fpga_mem_get_32(int address);
-extern int fpga_mem_get_16(int address);
-extern int fpga_mem_get_8(int address);
-extern void fpga_mem_set_32(int address, int data);
-extern void fpga_mem_set_16(int address, int data);
-extern void fpga_mem_set_8(int address, int data);
+extern int fpga_get32(int address);
+extern int fpga_get16(int address);
+extern int fpga_get8(int address);
+extern void fpga_set32(int address, int data);
+extern void fpga_set16(int address, int data);
+extern void fpga_set8(int address, int data);
 
 #endif /* FPGA_H_ */

@@ -10,6 +10,39 @@ int fpga_open();
 //Functionality: Close the recourse in FPGA
 void fpga_close();
 
+//Functionality: Get the 32bit memory value in FPGA
+//Argument:
+//address: memory offset for FPGA
+int fpga_get32(int address);
+
+//Functionality: Get the 16bit memory value in FPGA
+//Argument:
+//address: memory offset for FPGA
+int fpga_get16(int address);
+
+//Functionality: Get the 8bit memory value in FPGA
+//Argument:
+//address: memory offset for FPGA
+int fpga_get8(int address);
+
+//Functionality: Set the 32bit memory value in FPGA
+//Argument:
+//address: memory offset for FPGA
+//data: data to set
+void fpga_set32(int address, int data);
+
+//Functionality: Set the 16bit memory value in FPGA
+//Argument:
+//address: memory offset for FPGA
+//data: data to set
+void fpga_set16(int address, int data);
+
+//Functionality: Set the 8bit memory value in FPGA
+//Argument:
+//address: memory offset for FPGA
+//data: data to set
+void fpga_set8(int address, int data);
+
 //Functionality: Open the shield IO
 void shield_ctrl_init();
 
