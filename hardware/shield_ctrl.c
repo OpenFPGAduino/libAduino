@@ -9,5 +9,5 @@
 
 void shield_ctrl_init()
 {
-	  SHIELD_CTRL = 0x03030300;
+    SHIELD_CTRL = 0x03030300;
 }

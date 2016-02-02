@@ -23,25 +23,25 @@ void AM2301_init(void* AM2301_address)
 
 float AM2301_get_temperature(void* AM2301_address)
 {
-	  short temperature_data;
-	  int   sign;
-	  float temperature;
-	  while(AM2301_READY!=1);
-	  sign             = 0x1 & (AM2301_DATA>>15);
-	  temperature_data = 0x7fff & AM2301_DATA;
-	  if (sign)
-		  temperature  = temperature_data/-10.0;
-	  else
-		  temperature  = temperature_data/10.0;
-	  return (temperature);
+    short temperature_data;
+    int   sign;
+    float temperature;
+    while(AM2301_READY!=1);
+    sign             = 0x1 & (AM2301_DATA>>15);
+    temperature_data = 0x7fff & AM2301_DATA;
+    if (sign)
+        temperature  = temperature_data/-10.0;
+    else
+        temperature  = temperature_data/10.0;
+    return (temperature);
 }
 
 float AM2301_get_moisture(void* AM2301_address)
 {
-	  short moisture_data;
-	  float moisture;
-	  while(AM2301_READY!=1);
-	  moisture_data    =  AM2301_DATA >> 16;
-	  moisture     = moisture_data/10.0;
-	  return (moisture);
+    short moisture_data;
+    float moisture;
+    while(AM2301_READY!=1);
+    moisture_data    =  AM2301_DATA >> 16;
+    moisture     = moisture_data/10.0;
+    return (moisture);
 }

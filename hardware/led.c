@@ -11,8 +11,8 @@
 #define LED_DATA      *((volatile int*) led_address)
 void set_rgb_led(void* led_address, char r, char g, char b)
 {
-	unsigned int i=0x0;
-	i = r + (g << 8) + (b << 16);
-	LED_DATA = i;
-	return;
+    unsigned int i=0x0;
+    i = r + (g << 8) + (b << 16);
+    LED_DATA = i;
+    return;
 }

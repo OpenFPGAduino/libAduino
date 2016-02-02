@@ -19,22 +19,22 @@
 
 void AD7490_reset(void* AD7490_address)
 {
-	AD7490_RESET = 1;
-	AD7490_RESET = 0;
+    AD7490_RESET = 1;
+    AD7490_RESET = 0;
 }
 
 void AD7490_init(void* AD7490_address)
 {
-	AD7490_reset(AD7490_address);
-	AD7490_CNV_DELAY = 2;
-	AD7490_RANG = 0;   //0 for 0-2* Vref 1 fpr 0-Vref
-	AD7490_CODING = 1; //1 for Natural Binary 2 for Twos Complement
+    AD7490_reset(AD7490_address);
+    AD7490_CNV_DELAY = 2;
+    AD7490_RANG = 0;   //0 for 0-2* Vref 1 fpr 0-Vref
+    AD7490_CODING = 1; //1 for Natural Binary 2 for Twos Complement
 }
 
 uint16_t AD7490_get_data(void* AD7490_address, int channel)
 {
-	if(channel < 0 || channel > 15)
-		return (0);
-	uint16_t data = *(&AD7490_CH_BASE + channel);
-	return (0xfff & data);  //12bit ADC data;
+    if(channel < 0 || channel > 15)
+        return (0);
+    uint16_t data = *(&AD7490_CH_BASE + channel);
+    return (0xfff & data);  //12bit ADC data;
 }

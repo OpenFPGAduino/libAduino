@@ -15,26 +15,26 @@
 
 void fan_motor_init(void* fan_address, int frequent, int duty_cycle)
 {
-	FANMOTOR_PWM_FREQUENCE = frequent * 0x100000000 / 200000000;
-	usleep(50);
-	FANMOTOR_PWM_WIDTH = 0xFFFFFFFF / 100 * duty_cycle;
-	usleep(50);
-	FANMOTOR_ON_OFF = 1; 
-	usleep(50);
+    FANMOTOR_PWM_FREQUENCE = frequent * 0x100000000 / 200000000;
+    usleep(50);
+    FANMOTOR_PWM_WIDTH = 0xFFFFFFFF / 100 * duty_cycle;
+    usleep(50);
+    FANMOTOR_ON_OFF = 1;
+    usleep(50);
 }
 
 void fan_ON(void* fan_address)
 {
-	FANMOTOR_ON_OFF = 1; 
+    FANMOTOR_ON_OFF = 1;
 }
 
 void fan_OFF(void* fan_address)
 {
-	FANMOTOR_ON_OFF = 0;
+    FANMOTOR_ON_OFF = 0;
 }
 
 void fan_motor_set_pwm(void* fan_address, unsigned int pwm)
 {
-	FANMOTOR_PWM_WIDTH = pwm;
-	usleep(50);
+    FANMOTOR_PWM_WIDTH = pwm;
+    usleep(50);
 }

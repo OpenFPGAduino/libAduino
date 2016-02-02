@@ -15,6 +15,6 @@ extern void brush_motor_back(void* brushmotor_address);
 extern void brush_motor_ON(void* brushmotor_address);
 extern void brush_motor_OFF(void* brushmotor_address);
 extern void brush_motor_set_pwm(void* brushmotor_address,
-        unsigned int pwm);
+                                unsigned int pwm);
 
 #endif /* BRUSHMOTOR_H_ */

@@ -13,10 +13,10 @@
 
 int get_position(void* sensor_address)
 {
-	return POSITITON_SENSOR_ADDRESS_POSTITION;
+    return POSITITON_SENSOR_ADDRESS_POSTITION;
 }
 
 int get_direction(void* sensor_address)
 {
-	return POSITITON_SENSOR_ADDRESS_DIRECTION;
+    return POSITITON_SENSOR_ADDRESS_DIRECTION;
 }

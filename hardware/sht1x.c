@@ -37,9 +37,9 @@ float sht1x_get_moisture(void* sht1x_address)
     //while(SHT1X_READY!=1);
     moisture_data    =  SHT1X_MOIS_DATA;
     linear_moisture     = -2.0468 + 0.0367 * moisture_data +
-            -1.5955E-6 * moisture_data * moisture_data;
+                          -1.5955E-6 * moisture_data * moisture_data;
     moisture = (temperature - 25) *(0.01 + 0.00008 * moisture_data)
-            + linear_moisture;
+               + linear_moisture;
     return (moisture);
 }
 

@@ -25,19 +25,19 @@ inputs
 *****************************************************************/
 void I2C_init(uint32_t base,uint32_t clk,uint32_t speed)
 {
-  uint32_t prescale = (clk/( 5 * speed))-1;
+    uint32_t prescale = (clk/( 5 * speed))-1;
 #ifdef  I2C_DEBUG
-        printf(" Initializing  I2C at 0x%x, \n\twith clock speed 0x%x \n\tand SCL speed 0x%x \n\tand prescale 0x%x\n",base,clk,speed,prescale);
+    printf(" Initializing  I2C at 0x%x, \n\twith clock speed 0x%x \n\tand SCL speed 0x%x \n\tand prescale 0x%x\n",base,clk,speed,prescale);
 #endif
-  IOWR_OPENCORES_I2C_CTR(base, 0x00); /* turn off the core*/
+    IOWR_OPENCORES_I2C_CTR(base, 0x00); /* turn off the core*/
 
-  IOWR_OPENCORES_I2C_CR(base, OPENCORES_I2C_CR_IACK_MSK); /* clearn any pening IRQ*/
+    IOWR_OPENCORES_I2C_CR(base, OPENCORES_I2C_CR_IACK_MSK); /* clearn any pening IRQ*/
 
-  IOWR_OPENCORES_I2C_PRERLO(base, (0xff & prescale));  /* load low presacle bit*/
+    IOWR_OPENCORES_I2C_PRERLO(base, (0xff & prescale));  /* load low presacle bit*/
 
-  IOWR_OPENCORES_I2C_PRERHI(base, (0xff & (prescale>>8)));  /* load upper prescale bit */
+    IOWR_OPENCORES_I2C_PRERHI(base, (0xff & (prescale>>8)));  /* load upper prescale bit */
 
-  IOWR_OPENCORES_I2C_CTR(base, OPENCORES_I2C_CTR_EN_MSK); /* turn on the core*/
+    IOWR_OPENCORES_I2C_CTR(base, OPENCORES_I2C_CTR_EN_MSK); /* turn on the core*/
 
 }
 
@@ -57,33 +57,33 @@ return value
 int I2C_start(uint32_t base, uint32_t add, uint32_t read)
 {
 #ifdef  I2C_DEBUG
-        printf(" Start  I2C at 0x%x, \n\twith address 0x%x \n\tand read 0x%x \n\tand prescale 0x%x\n",base,add,read);
+    printf(" Start  I2C at 0x%x, \n\twith address 0x%x \n\tand read 0x%x \n\tand prescale 0x%x\n",base,add,read);
 #endif
 
-          /* transmit the address shifted by one and the read/write bit*/
-  IOWR_OPENCORES_I2C_TXR(base, ((add<<1) + (0x1 & read)));
+    /* transmit the address shifted by one and the read/write bit*/
+    IOWR_OPENCORES_I2C_TXR(base, ((add<<1) + (0x1 & read)));
 
-          /* set start and write  bits which will start the transaction*/
-  IOWR_OPENCORES_I2C_CR(base, OPENCORES_I2C_CR_STA_MSK | OPENCORES_I2C_CR_WR_MSK );
+    /* set start and write  bits which will start the transaction*/
+    IOWR_OPENCORES_I2C_CR(base, OPENCORES_I2C_CR_STA_MSK | OPENCORES_I2C_CR_WR_MSK );
 
-          /* wait for the trnasaction to be over.*/
-  while( IORD_OPENCORES_I2C_SR(base) & OPENCORES_I2C_SR_TIP_MSK);
+    /* wait for the trnasaction to be over.*/
+    while( IORD_OPENCORES_I2C_SR(base) & OPENCORES_I2C_SR_TIP_MSK);
 
-         /* now check to see if the address was acknowledged */
-   if(IORD_OPENCORES_I2C_SR(base) & OPENCORES_I2C_SR_RXNACK_MSK)
-   {
+    /* now check to see if the address was acknowledged */
+    if(IORD_OPENCORES_I2C_SR(base) & OPENCORES_I2C_SR_RXNACK_MSK)
+    {
 #ifdef  I2C_DEBUG
         printf("\tNOACK\n");
 #endif
         return (I2C_NOACK);
-   }
-   else
-   {
+    }
+    else
+    {
 #ifdef  I2C_DEBUG
         printf("\tACK\n");
 #endif
-       return (I2C_ACK);
-   }
+        return (I2C_ACK);
+    }
 }
 
 /****************************************************************
@@ -103,24 +103,24 @@ return value
 uint32_t I2C_read(uint32_t base,uint32_t last)
 {
 #ifdef  I2C_DEBUG
-        printf(" Read I2C at 0x%x, \n\twith last0x%x\n",base,last);
+    printf(" Read I2C at 0x%x, \n\twith last0x%x\n",base,last);
 #endif
-  if( last)
-  {
-               /* start a read and no ack and stop bit*/
-           IOWR_OPENCORES_I2C_CR(base, OPENCORES_I2C_CR_RD_MSK |
-               OPENCORES_I2C_CR_NACK_MSK | OPENCORES_I2C_CR_STO_MSK);
-  }
-  else
-  {
-          /* start read*/
-          IOWR_OPENCORES_I2C_CR(base, OPENCORES_I2C_CR_RD_MSK );
-  }
-          /* wait for the trnasaction to be over.*/
-  while( IORD_OPENCORES_I2C_SR(base) & OPENCORES_I2C_SR_TIP_MSK);
+    if( last)
+    {
+        /* start a read and no ack and stop bit*/
+        IOWR_OPENCORES_I2C_CR(base, OPENCORES_I2C_CR_RD_MSK |
+                              OPENCORES_I2C_CR_NACK_MSK | OPENCORES_I2C_CR_STO_MSK);
+    }
+    else
+    {
+        /* start read*/
+        IOWR_OPENCORES_I2C_CR(base, OPENCORES_I2C_CR_RD_MSK );
+    }
+    /* wait for the trnasaction to be over.*/
+    while( IORD_OPENCORES_I2C_SR(base) & OPENCORES_I2C_SR_TIP_MSK);
 
-         /* now read the data */
-        return (IORD_OPENCORES_I2C_RXR(base));
+    /* now read the data */
+    return (IORD_OPENCORES_I2C_RXR(base));
 
 }
 
@@ -128,7 +128,7 @@ uint32_t I2C_read(uint32_t base,uint32_t last)
 int I2C_write
             assumes that any addressing and start
             has already been done.
-            writes one byte of data from the slave.  
+            writes one byte of data from the slave.
             If last is set the stop bit set.
 inputs
       base = the base address of the component
@@ -142,40 +142,40 @@ return value
 *****************************************************************/
 uint32_t I2C_write(uint32_t base,uint8_t data, uint32_t last)
 {
-  #ifdef  I2C_DEBUG
-        printf(" Read I2C at 0x%x, \n\twith data 0x%x,\n\twith last0x%x\n",base,data,last);
+#ifdef  I2C_DEBUG
+    printf(" Read I2C at 0x%x, \n\twith data 0x%x,\n\twith last0x%x\n",base,data,last);
 #endif
-                 /* transmit the data*/
-  IOWR_OPENCORES_I2C_TXR(base, data);
+    /* transmit the data*/
+    IOWR_OPENCORES_I2C_TXR(base, data);
 
-  if( last)
-  {
-               /* start a read and no ack and stop bit*/
-           IOWR_OPENCORES_I2C_CR(base, OPENCORES_I2C_CR_WR_MSK |
-               OPENCORES_I2C_CR_STO_MSK);
-  }
-  else
-  {
-          /* start read*/
-          IOWR_OPENCORES_I2C_CR(base, OPENCORES_I2C_CR_WR_MSK );
-  }
-           /* wait for the trnasaction to be over.*/
-  while( IORD_OPENCORES_I2C_SR(base) & OPENCORES_I2C_SR_TIP_MSK);
+    if( last)
+    {
+        /* start a read and no ack and stop bit*/
+        IOWR_OPENCORES_I2C_CR(base, OPENCORES_I2C_CR_WR_MSK |
+                              OPENCORES_I2C_CR_STO_MSK);
+    }
+    else
+    {
+        /* start read*/
+        IOWR_OPENCORES_I2C_CR(base, OPENCORES_I2C_CR_WR_MSK );
+    }
+    /* wait for the trnasaction to be over.*/
+    while( IORD_OPENCORES_I2C_SR(base) & OPENCORES_I2C_SR_TIP_MSK);
 
-         /* now check to see if the address was acknowledged */
-   if(IORD_OPENCORES_I2C_SR(base) & OPENCORES_I2C_SR_RXNACK_MSK)
-   {
+    /* now check to see if the address was acknowledged */
+    if(IORD_OPENCORES_I2C_SR(base) & OPENCORES_I2C_SR_RXNACK_MSK)
+    {
 #ifdef  I2C_DEBUG
         printf("\tNOACK\n");
 #endif
         return (I2C_NOACK);
-   }
-   else
-   {
+    }
+    else
+    {
 #ifdef  I2C_DEBUG
         printf("\tACK\n");
 #endif
-       return (I2C_ACK);
-   }
+        return (I2C_ACK);
+    }
 
 }

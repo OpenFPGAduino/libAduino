@@ -6,14 +6,14 @@
 
 void AD7940_test()
 {
-	int i;
-	AD7490_init(ADC7490_0);
+    int i;
+    AD7490_init(ADC7490_0);
     while(1)
     {
         sleep(1);
         for(i = 0; i < 16; i++)
-        	printf("ADC channel %d data is %d\n", i,
-        			AD7490_get_data(ADC7490_0, i));
+            printf("ADC channel %d data is %d\n", i,
+                   AD7490_get_data(ADC7490_0, i));
     }
 }
 
@@ -64,26 +64,26 @@ void brush_motor_test()
 
 void subdivision_step_motor_test()
 {
-	int i;
-	step_motor_init(SUBDIVISION_STEP_MOTOR_0, 10000, 30);
-	step_motor_move_step_back(SUBDIVISION_STEP_MOTOR_0);
-	while(1) {
-		for (i = 0; i< 64 ; i++) {
-			setp_motor_subdivision(SUBDIVISION_STEP_MOTOR_0, i, 64 ,30);
-			usleep(100000);
-		}
-		for (i = 64; i >=0 ; i--) {
-			setp_motor_subdivision(SUBDIVISION_STEP_MOTOR_0, i, 64 ,30);
-			usleep(100000);
-		}
-	}
+    int i;
+    step_motor_init(SUBDIVISION_STEP_MOTOR_0, 10000, 30);
+    step_motor_move_step_back(SUBDIVISION_STEP_MOTOR_0);
+    while(1) {
+        for (i = 0; i< 64 ; i++) {
+            setp_motor_subdivision(SUBDIVISION_STEP_MOTOR_0, i, 64 ,30);
+            usleep(100000);
+        }
+        for (i = 64; i >=0 ; i--) {
+            setp_motor_subdivision(SUBDIVISION_STEP_MOTOR_0, i, 64 ,30);
+            usleep(100000);
+        }
+    }
 }
 
 void led_unit_test(void)
 {
-	set_rgb_led(LED_0, 255, 0 , 0);
-	set_rgb_led(LED_1, 0, 255 , 0);
-	set_rgb_led(LED_2, 0, 0 , 255);
+    set_rgb_led(LED_0, 255, 0 , 0);
+    set_rgb_led(LED_1, 0, 255 , 0);
+    set_rgb_led(LED_2, 0, 0 , 255);
 }
 
 
