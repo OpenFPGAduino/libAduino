@@ -27,3 +27,6 @@ $(SO): $(OBJ)
 clean:
 	rm -f $(LIB) $(SO) $(OBJ)
 	rm -rf lib
+
+format:
+	find . -name "*.c" -exec astyle {} \;	 
