@@ -1,6 +1,10 @@
 #ifndef OPENFGPADUINO_H_
 #define OPENFGPADUINO_H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #define INPUT 0
 #define OUTPUT 1
 
@@ -127,5 +131,9 @@ unsigned int sleep(unsigned int seconds);
 //Argument:
 //usecods: The micro seconds for sleeping
 int usleep(unsigned int useconds);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* OPENFGPADUINO_H_ */
