@@ -1,7 +1,7 @@
 CFLAGS = -D _DEBUG -static -g  -Wall
 CC=arm-none-linux-gnueabi-gcc
 AR=arm-none-linux-gnueabi-ar
-SRC=$(wildcard api/*.c hardware/*.c)
+SRC=$(wildcard api/*.c hardware/*.c ut/*.c)
 OBJ=$(addprefix ./, $(addsuffix .o, $(basename $(SRC))))
 LIB=libaduino.a
 SO =libaduino.so
