@@ -1,6 +1,7 @@
 *.o
 *.a
 *.so
+unittest
 lib
 lib/*
 *~
