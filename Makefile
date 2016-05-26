@@ -9,6 +9,9 @@ HEAD=api/openfpgaduino.h
 
 all: $(LIB) $(SO) lib
 
+test: all
+	$(CC) $(LIB) -o unittest
+
 lib:
 	mkdir lib
 	cp -f $(LIB) ./lib/
