@@ -153,6 +153,22 @@ float am2301_moisture(int id)
     return AM2301_get_moisture(address);
 }
 
+void steering(int id, int angle)
+{
+    void* address;
+    switch (id) {
+    case 0:
+        address = STERING_MOTOR_0;
+        break;
+    case 1:
+        address = STERING_MOTOR_1;
+        break;
+    default:
+        return 0;
+    }
+    steering_set_angle(address, angle);
+}
+
 int print(const char* format, ...)
 {
     va_list ap;
