@@ -12,7 +12,7 @@ void setUp(void)
 void tearDown(void)
 {
   printf("teardown\n");
-  fpga_close();
+  //fpga_close();
 }
 
 
@@ -26,7 +26,7 @@ void AM2301_ut()
 
 void steering_ut()
 {
-    steering(0,15);
+    steering(0,45);
     steering(1,90);
 }
 
