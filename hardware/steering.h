@@ -8,6 +8,6 @@
 #ifndef STEERING_H_
 #define STEERING_H_
 
-extern void steering_set_angle(void* steering_address, float angle);
+extern void steering_set_angle(void* steering_address, int angle);
 
 #endif /* STEERING_H_ */

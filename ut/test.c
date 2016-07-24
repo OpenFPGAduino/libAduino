@@ -14,7 +14,7 @@ void tearDown(void)
 }
 
 
-void AM2301()
+void AM2301_ut()
 {
     printf("Temperature is %.2f C", am2301_temperature(0));
     printf("\tTemperature is %.2f C\n", am2301_moisture(0));
@@ -22,10 +22,16 @@ void AM2301()
     printf("\tMoisture is %.2f%% \n", am2301_moisture(1));
 }
 
+void steering_ut()
+{
+    steering(0,15);
+    steering(1,90);
+}
 
 int main()
 {
     UnityBegin("libAduino");
-    RUN_TEST(AM2301);
+    RUN_TEST(AM2301_ut);
+    RUN_TEST(steering_ut);
     return (UnityEnd());
 }

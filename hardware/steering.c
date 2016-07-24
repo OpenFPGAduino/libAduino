@@ -10,9 +10,9 @@
 #define STEERING_ID            *((volatile int*) STEERING_CTRL_ADDRESS)
 #define STEERING_PWM_ANGLE *((volatile int*) STEERING_CTRL_ADDRESS+1)
 
-void steering_set_angle(void* steering_address, float angle)
+void steering_set_angle(void* steering_address, int angle)
 {
-    STEERING_PWM_ANGLE = (1024 * angle / 360);
+    STEERING_PWM_ANGLE = (1024.0 * angle / 360);
 }
 
 
