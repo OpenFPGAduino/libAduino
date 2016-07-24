@@ -117,6 +117,12 @@ int ain_a(int id);
 //id: use 1-8
 int ain_b(int id);
 
+//Functionality: Set the steering to given agnle
+//Argument:
+//id: use 1-8
+//angle: 0-180 degree
+void steering(int id, int angle);
+
 //Functionality: print the string to the console
 //Argument:
 //format:output format string
