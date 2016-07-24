@@ -11,7 +11,7 @@
 #define AM2301_ID      *((volatile int*) AM2301_address+1)
 #define AM2301_DATA    *((volatile int*) AM2301_address+3)
 #define AM2301_READY   *((volatile int*) AM2301_address+4)
-
+#define AM2301_TIMEOUT 30000
 void AM2301_init(void* AM2301_address)
 {
 //	  printf("AM2301 ID   =0x%x\n", AM2301_ID);
@@ -26,7 +26,11 @@ float AM2301_get_temperature(void* AM2301_address)
     short temperature_data;
     int   sign;
     float temperature;
-    while(AM2301_READY!=1);
+    long   timeout = 0;
+    while(AM2301_READY!=1) {
+        timeout++;
+        if(timeout > AM2301_TIMEOUT) return 0;
+    }
     sign             = 0x1 & (AM2301_DATA>>15);
     temperature_data = 0x7fff & AM2301_DATA;
     if (sign)
@@ -40,7 +44,11 @@ float AM2301_get_moisture(void* AM2301_address)
 {
     short moisture_data;
     float moisture;
-    while(AM2301_READY!=1);
+    long   timeout = 0;
+    while(AM2301_READY!=1) {
+        timeout++;
+        if(timeout > AM2301_TIMEOUT) return 0;
+    }
     moisture_data    =  AM2301_DATA >> 16;
     moisture     = moisture_data/10.0;
     return (moisture);
