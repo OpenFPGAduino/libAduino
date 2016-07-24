@@ -6,19 +6,21 @@ void setUp(void)
 {
   /* This is run before EACH TEST */
   printf("setup\n");
+  fpga_open();
 }
 
 void tearDown(void)
 {
   printf("teardown\n");
+  fpga_close();
 }
 
 
 void AM2301_ut()
 {
     printf("Temperature is %.2f C", am2301_temperature(0));
-    printf("\tTemperature is %.2f C\n", am2301_moisture(0));
-    printf("Moisture is %.2f%%", am2301_temperature(1));
+    printf("\tTemperature is %.2f C\n", am2301_temperature(1));
+    printf("Moisture is %.2f%%", am2301_moisture(0));
     printf("\tMoisture is %.2f%% \n", am2301_moisture(1));
 }
 
