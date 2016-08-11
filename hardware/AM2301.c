@@ -11,7 +11,7 @@
 #define AM2301_ID      *((volatile int*) AM2301_address+1)
 #define AM2301_DATA    *((volatile int*) AM2301_address+3)
 #define AM2301_READY   *((volatile int*) AM2301_address+4)
-#define AM2301_TIMEOUT 30000
+#define AM2301_TIMEOUT 99999
 void AM2301_init(void* AM2301_address)
 {
 //	  printf("AM2301 ID   =0x%x\n", AM2301_ID);
