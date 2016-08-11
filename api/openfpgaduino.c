@@ -163,6 +163,48 @@ void steering(int id, int angle)
     case 1:
         address = STERING_MOTOR_1;
         break;
+    case 2:
+        address = STERING_MOTOR_2;
+        break;
+    case 3:
+        address = STERING_MOTOR_3;
+        break;
+    case 4:
+        address = STERING_MOTOR_4;
+        break;
+    case 5:
+        address = STERING_MOTOR_5;
+        break;
+    case 6:
+        address = STERING_MOTOR_6;
+        break;
+    case 7:
+        address = STERING_MOTOR_7;
+        break;
+    case 8:
+        address = STERING_MOTOR_8;
+        break;
+    case 9:
+        address = STERING_MOTOR_9;
+        break;
+    case 10:
+        address = STERING_MOTOR_10;
+        break;
+    case 11:
+        address = STERING_MOTOR_11;
+        break;
+    case 12:
+        address = STERING_MOTOR_12;
+        break;
+    case 13:
+        address = STERING_MOTOR_13;
+        break;
+    case 14:
+        address = STERING_MOTOR_14;
+        break;
+    case 15:
+        address = STERING_MOTOR_15;
+        break;
     default:
         return 0;
     }
