@@ -147,6 +147,27 @@ float am2301_moisture(int id)
     case 1:
         address = AM2301_1;
         break;
+    case 2:
+        address = AM2301_2;
+        break;
+    case 3:
+        address = AM2301_3;
+        break;
+    case 4:
+        address = AM2301_4;
+        break;
+    case 5:
+        address = AM2301_5;
+        break;
+    case 6:
+        address = AM2301_6;
+        break;
+    case 7:
+        address = AM2301_7;
+        break;
+    case 8:
+        address = AM2301_8;
+        break;
     default:
         return 0;
     }
