@@ -232,6 +232,65 @@ void steering(int id, int angle)
     steering_set_angle(address, angle);
 }
 
+
+void stepmotor(int id, int forward_back, int step)
+{
+    int i;
+    void* address;
+    switch (id) {
+    case 0:
+        address = STEP_MOTOR_0;
+        break;
+    case 1:
+        address = STEP_MOTOR_1;
+        break;
+    case 2:
+        address = STEP_MOTOR_2;
+        break;
+    case 3:
+        address = STEP_MOTOR_3;
+        break;
+    case 4:
+        address = STEP_MOTOR_4;
+        break;
+    default:
+        return;
+    }
+    for(i=0; i<step; i++ ) {
+	if(forward_back){
+	    step_motor_move_step_forward(id);
+        } else {
+	    step_motor_move_step_back(id);
+        }
+    }
+}
+
+void stepmotor_init(int id, unsigned int frequence, unsigned int duty_cycle, unsigned int delay)
+{
+    void* address;
+    switch (id) {
+    case 0:
+        address = STEP_MOTOR_0;
+        break;
+    case 1:
+        address = STEP_MOTOR_1;
+        break;
+    case 2:
+        address = STEP_MOTOR_2;
+        break;
+    case 3:
+        address = STEP_MOTOR_3;
+        break;
+    case 4:
+        address = STEP_MOTOR_4;
+        break;
+    default:
+        return;
+    }
+    step_motor_init(address, frequence, duty_cycle);
+    step_motor_set_delay(delay);
+}
+
 int print(const char* format, ...)
 {
     va_list ap;
