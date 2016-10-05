@@ -291,6 +291,65 @@ void stepmotor_init(int id, unsigned int frequence, unsigned int duty_cycle, uns
     step_motor_set_delay(delay);
 }
 
+void brushmotor_init(int id, unsigned int frequence, unsigned int duty_cycle)
+{
+    void* address;
+    switch (id) {
+    case 0:
+        address = BRUSH_MOTOR_0;
+        break;
+    case 1:
+        address = BRUSH_MOTOR_1;
+        break;
+    case 2:
+        address = BRUSH_MOTOR_2;
+        break;
+    case 3:
+        address = BRUSH_MOTOR_3;
+        break;
+    case 4:
+        address = BRUSH_MOTOR_4;
+        break;
+    default:
+        return;
+    }
+    brush_motor_init(address, frequence, duty_cycle);
+}
+
+void brushmotor_run(int id, unsigned int on_off, unsigned int forward_back)
+{
+    void* address;
+    switch (id) {
+    case 0:
+        address = BRUSH_MOTOR_0;
+        break;
+    case 1:
+        address = BRUSH_MOTOR_1;
+        break;
+    case 2:
+        address = BRUSH_MOTOR_2;
+        break;
+    case 3:
+        address = BRUSH_MOTOR_3;
+        break;
+    case 4:
+        address = BRUSH_MOTOR_4;
+        break;
+    default:
+        return;
+    }
+    if (on_off){
+        brush_motor_ON(address);
+    } else {
+        brush_motor_OFF(address);
+    }
+    if (forward_back) {
+        brush_motor_forward(address);
+    } else {
+        brush_motor_back(address);
+    }
+}
+
 int print(const char* format, ...)
 {
     va_list ap;

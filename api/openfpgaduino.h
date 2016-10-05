@@ -123,6 +123,21 @@ int ain_b(int id);
 //angle: 0-180 degree
 void steering(int id, int angle);
 
+//Functionality: init the step motor
+//Argument:
+//id: use 1-8
+//frequence: of pwn
+//duty_cycle: duty cycle of pwm
+//delay: delay of every step
+void stepmotor_init(int id, unsigned int frequence, unsigned int duty_cycle, unsigned int delay);
+
+//Functionality: Run the step motor in given step
+//Argument:
+//id: use 1-8
+//forward_back: run dirction
+//step: run step
+void stepmotor(int id, int forward_back, int step);
+
 //Functionality: print the string to the console
 //Argument:
 //format:output format string
