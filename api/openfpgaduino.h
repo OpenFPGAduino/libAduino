@@ -138,6 +138,20 @@ void stepmotor_init(int id, unsigned int frequence, unsigned int duty_cycle, uns
 //step: run step
 void stepmotor(int id, int forward_back, int step);
 
+//Functionality: init the brush motor
+//Argument:
+//id: use 1-8
+//frequence: of pwn
+//duty_cycle: duty cycle of pwm
+void brushmotor_init(int id, unsigned int frequence, unsigned int duty_cycle);
+
+//Functionality: Run the brush motor
+//Argument:
+//id: use 1-8
+//on_off: turn on or off the motor
+//forward_back: run dirction
+void brushmotor_run(int id, unsigned int on_off, unsigned int forward_back);
+
 //Functionality: print the string to the console
 //Argument:
 //format:output format string
