@@ -227,7 +227,7 @@ void steering(int id, int angle)
         address = STERING_MOTOR_15;
         break;
     default:
-        return 0;
+        return;
     }
     steering_set_angle(address, angle);
 }
@@ -349,6 +349,66 @@ void brushmotor_run(int id, unsigned int on_off, unsigned int forward_back)
         brush_motor_back(address);
     }
 }
+
+void fanmotor_init(int id, unsigned int frequence, unsigned int duty_cycle)
+{
+    void* address;
+    switch (id) {
+    case 0:
+        address = FAN_MOTOR_0;
+        break;
+    case 1:
+        address = FAN_MOTOR_1;
+        break;
+    case 2:
+        address = FAN_MOTOR_2;
+        break;
+    case 3:
+        address = FAN_MOTOR_3;
+        break;
+    case 4:
+        address = FAN_MOTOR_4;
+        break;
+    default:
+        return;
+    }
+    fan_motor_init(address, frequence, duty_cycle);
+}
+
+void fanmotor_run(int id, unsigned int on_off, unsigned int forward_back)
+{
+    void* address;
+    switch (id) {
+    case 0:
+        address = FAN_MOTOR_0;
+        break;
+    case 1:
+        address = FAN_MOTOR_1;
+        break;
+    case 2:
+        address = FAN_MOTOR_2;
+        break;
+    case 3:
+        address = FAN_MOTOR_3;
+        break;
+    case 4:
+        address = FAN_MOTOR_4;
+        break;
+    default:
+        return;
+    }
+    if (on_off){
+        brush_motor_ON(address);
+    } else {
+        brush_motor_OFF(address);
+    }
+    if (forward_back) {
+        brush_motor_forward(address);
+    } else {
+        brush_motor_back(address);
+    }
+}
+
 
 int print(const char* format, ...)
 {
