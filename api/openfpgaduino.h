@@ -150,7 +150,22 @@ void brushmotor_init(int id, unsigned int frequence, unsigned int duty_cycle);
 //id: use 1-8
 //on_off: turn on or off the motor
 //forward_back: run dirction
-void brushmotor_run(int id, unsigned int on_off, unsigned int forward_back);
+//duty_cycle: speed of motor
+void brushmotor_run(int id, unsigned int on_off, unsigned int forward_back, unsigned int duty_cycle);
+
+//Functionality: init the fan motor
+//Argument:
+//id: use 1-8
+//frequence: of pwn
+//duty_cycle: duty cycle of pwm
+void fanmotor_init(int id, unsigned int frequence, unsigned int duty_cycle);
+
+//Functionality: Run the fan motor
+//Argument:
+//id: use 1-8
+//on_off: turn on or off the motor
+//duty_cycle: duty cycle of pwm
+void fanmotor_run(int id, unsigned int on_off, unsigned int duty_cycle);
 
 //Functionality: print the string to the console
 //Argument:

@@ -11,6 +11,8 @@
 #include "../hardware/step_motor.h"
 #include "../hardware/brush_motor.h"
 #include "../hardware/fan_motor.h"
+#include "../hardware/steering.h"
+#include "../hardware/PWM.h"
 void led(int id, char r, char g, char b)
 {
     void* address;
@@ -98,7 +100,7 @@ int ain_b(int id)
     return AD7490_get_data(ADC7490_1, id -1);
 }
 
-void pwm(int id, int pwm)
+void pwm(int id, unsigned int pwm, unsigned gate, unsigned int duty_cycle)
 {
     //PWM_init();
     void* address;
@@ -118,7 +120,8 @@ void pwm(int id, int pwm)
     default:
         return;
     }
-
+    PWM_SET_GATE(address, gate);
+    PWM_SET_DUTY_CYCLE(address, duty_cycle);
 }
 
 float am2301_temperature(int id)
@@ -258,9 +261,9 @@ void stepmotor(int id, int forward_back, int step)
     }
     for(i=0; i<step; i++ ) {
 	if(forward_back){
-	    step_motor_move_step_forward(id);
+	    step_motor_move_step_forward(address);
         } else {
-	    step_motor_move_step_back(id);
+	    step_motor_move_step_back(address);
         }
     }
 }
@@ -316,7 +319,7 @@ void brushmotor_init(int id, unsigned int frequence, unsigned int duty_cycle)
     brush_motor_init(address, frequence, duty_cycle);
 }
 
-void brushmotor_run(int id, unsigned int on_off, unsigned int forward_back)
+void brushmotor_run(int id, unsigned int on_off, unsigned int forward_back, unsigned int duty_cycle)
 {
     void* address;
     switch (id) {
@@ -348,6 +351,7 @@ void brushmotor_run(int id, unsigned int on_off, unsigned int forward_back)
     } else {
         brush_motor_back(address);
     }
+    brush_motor_set_pwm(address, duty_cycle);
 }
 
 void fanmotor_init(int id, unsigned int frequence, unsigned int duty_cycle)
@@ -375,7 +379,7 @@ void fanmotor_init(int id, unsigned int frequence, unsigned int duty_cycle)
     fan_motor_init(address, frequence, duty_cycle);
 }
 
-void fanmotor_run(int id, unsigned int on_off, unsigned int forward_back)
+void fanmotor_run(int id, unsigned int on_off, unsigned int duty_cycle)
 {
     void* address;
     switch (id) {
@@ -398,15 +402,11 @@ void fanmotor_run(int id, unsigned int on_off, unsigned int forward_back)
         return;
     }
     if (on_off){
-        brush_motor_ON(address);
+    	fan_ON(address);
     } else {
-        brush_motor_OFF(address);
+    	fan_OFF(address);
     }
-    if (forward_back) {
-        brush_motor_forward(address);
-    } else {
-        brush_motor_back(address);
-    }
+    fan_motor_set_pwm(address, duty_cycle);
 }
 
 
