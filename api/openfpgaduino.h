@@ -117,6 +117,13 @@ int ain_a(int id);
 //id: use 1-8
 int ain_b(int id);
 
+//Functionality: init the pwm
+//Argument:
+//id: use 1-8
+//gate: gate size of pwn
+//duty_cycle: duty cycle of pwm
+void pwm(int id, unsigned int pwm, unsigned gate, unsigned int duty_cycle);
+
 //Functionality: Set the steering to given agnle
 //Argument:
 //id: use 1-8
@@ -126,7 +133,7 @@ void steering(int id, int angle);
 //Functionality: init the step motor
 //Argument:
 //id: use 1-8
-//frequence: of pwn
+//frequence:frequence of pwn
 //duty_cycle: duty cycle of pwm
 //delay: delay of every step
 void stepmotor_init(int id, unsigned int frequence, unsigned int duty_cycle, unsigned int delay);
