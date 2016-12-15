@@ -299,6 +299,18 @@ void stepmotor_init(int id, unsigned int frequence, unsigned int duty_cycle, uns
     case 4:
         address = STEP_MOTOR_4;
         break;
+    case 5:
+        address = STEP_MOTOR_5;
+        break;
+    case 6:
+        address = STEP_MOTOR_6;
+        break;
+    case 7:
+        address = STEP_MOTOR_7;
+        break;
+    case 8:
+        address = STEP_MOTOR_8;
+        break;
     default:
         return;
     }
