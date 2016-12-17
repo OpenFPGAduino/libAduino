@@ -337,6 +337,18 @@ void brushmotor_init(int id, unsigned int frequence, unsigned int duty_cycle)
     case 4:
         address = BRUSH_MOTOR_4;
         break;
+    case 5:
+        address = BRUSH_MOTOR_5;
+        break;
+    case 6:
+        address = BRUSH_MOTOR_1;
+        break;
+    case 7:
+        address = BRUSH_MOTOR_2;
+        break;
+    case 8:
+        address = BRUSH_MOTOR_3;
+        break;
     default:
         return;
     }
